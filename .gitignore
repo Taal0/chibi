@@ -3,6 +3,7 @@
 .env
 build/
 DerivedData/
+dist/
 xcuserdata/
 *.xcuserstate
 *.xccheckout

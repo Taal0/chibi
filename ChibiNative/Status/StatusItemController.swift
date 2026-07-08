@@ -10,7 +10,7 @@ final class StatusItemController: NSObject {
       if let url = Bundle.main.url(forResource: "tray", withExtension: "png"),
          let image = NSImage(contentsOf: url)
       {
-        image.isTemplate = true
+        image.isTemplate = false
         image.size = NSSize(width: 18, height: 18)
         button.image = image
       } else {
