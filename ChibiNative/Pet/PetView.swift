@@ -5,6 +5,7 @@ final class PetView: NSView {
   var onMouseDown: ((NSPoint) -> Void)?
   var onMouseDragged: ((NSPoint) -> Void)?
   var onMouseUp: ((NSPoint) -> Void)?
+  var onRightMouseDown: ((NSPoint) -> Void)?
 
   private let apng = APNGView(frame: .zero)
   private var tracking = false
@@ -50,5 +51,9 @@ final class PetView: NSView {
     guard tracking else { return }
     tracking = false
     onMouseUp?(localLocation(of: event))
+  }
+
+  override func rightMouseDown(with event: NSEvent) {
+    onRightMouseDown?(localLocation(of: event))
   }
 }

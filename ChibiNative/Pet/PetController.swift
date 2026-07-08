@@ -3,18 +3,21 @@ import Foundation
 
 /// State machine + interaction — port of PetLayer.tsx.
 /// Uses a pet-sized floating panel (not fullscreen overlay).
-final class PetController {
+final class PetController: ChatControllerDelegate {
   private let overlay: OverlayWindow
   private let petView: PetView
   private var roam: RoamController!
   private var desktop: VirtualDesktop
   private var monitors: [MonitorRegion] = []
+  private let chatController = ChatController()
+  private let idleTimer = IdleTimer()
 
   private var pos = CGPoint.zero
   private var userMoved = false
   private var visualState: CatVisualState = .idle
   private var headingLeft = false
   private var pokeTimer: Timer?
+  private var isChatBusy = false
 
   private struct Track {
     var startLocalX: CGFloat
@@ -40,6 +43,10 @@ final class PetController {
     petView.onMouseDown = { [weak self] pt in self?.handleMouseDown(pt) }
     petView.onMouseDragged = { [weak self] pt in self?.handleMouseDragged(pt) }
     petView.onMouseUp = { [weak self] pt in self?.handleMouseUp(pt) }
+    petView.onRightMouseDown = { [weak self] _ in self?.handleRightClick() }
+
+    chatController.delegate = self
+    configureIdleTimer()
   }
 
   func start() {
@@ -78,10 +85,11 @@ final class PetController {
       },
       isAllowed: { [weak self] in
         guard let self else { return false }
-        return self.visualState == .idle || self.visualState == .roam
+        return !self.isChatBusy && (self.visualState == .idle || self.visualState == .roam)
       }
     ))
     roam.onIdle()
+    idleTimer.start()
   }
 
   func handleScreenChange() {
@@ -96,8 +104,58 @@ final class PetController {
 
   func dispose() {
     pokeTimer?.invalidate()
+    idleTimer.stop()
     roam?.dispose()
+    chatController.hide()
     petView.apngView.stop()
+  }
+
+  // MARK: - ChatControllerDelegate
+
+  func chatDidStartStreaming() {
+    isChatBusy = true
+    noteInteraction()
+    setVisualState(.working)
+  }
+
+  func chatDidFinishStreaming() {
+    isChatBusy = false
+    if visualState == .working {
+      setVisualState(.idle)
+    }
+  }
+
+  func chatDidFail(_ message: String) {
+    isChatBusy = false
+    setVisualState(.error, autoIdleMs: Theme.errorDurationMs)
+  }
+
+  func chatDidInteract() {
+    noteInteraction()
+  }
+
+  // MARK: - Idle / sleep chain
+
+  private func configureIdleTimer() {
+    idleTimer.timings = IdleTimer.Timings(
+      yawnAfterIdleMs: Theme.mouseIdleTimeoutMs,
+      yawnDurationMs: Theme.yawnDurationMs,
+      sleepAfterDozeMs: Theme.mouseSleepTimeoutMs,
+      wakeDurationMs: Theme.wakeDurationMs
+    )
+    idleTimer.onEnterYawning = { [weak self] in self?.setVisualState(.yawning) }
+    idleTimer.onEnterDozing = { [weak self] in self?.setVisualState(.dozing) }
+    idleTimer.onEnterSleeping = { [weak self] in self?.setVisualState(.sleeping) }
+    idleTimer.onEnterWaking = { [weak self] in self?.setVisualState(.waking) }
+    idleTimer.onReturnIdle = { [weak self] in self?.setVisualState(.idle) }
+  }
+
+  private func noteInteraction() {
+    idleTimer.noteInteraction()
+    if visualState == .sleeping || visualState == .dozing || visualState == .yawning {
+      // IdleTimer drives waking → idle; avoid fighting its timers.
+      return
+    }
   }
 
   // MARK: - State / visual
@@ -116,7 +174,11 @@ final class PetController {
       if let t = pokeTimer { RunLoop.main.add(t, forMode: .common) }
     }
 
-    if state == .idle {
+    let busy = state != .idle && state != .roam
+      && state != .yawning && state != .dozing && state != .sleeping && state != .waking
+    idleTimer.setBusy(busy || isChatBusy)
+
+    if state == .idle && !isChatBusy {
       roam?.onIdle()
     } else if state != .roam {
       roam?.onBusy()
@@ -142,8 +204,13 @@ final class PetController {
   // MARK: - Mouse (pet-local coords → web pos)
 
   private func handleMouseDown(_ local: NSPoint) {
+    noteInteraction()
     if visualState == .roam {
       roam?.cancel()
+    }
+    if visualState == .sleeping || visualState == .dozing || visualState == .yawning {
+      // Wake instead of starting a drag/click; IdleTimer already began waking.
+      return
     }
     overlay.setInteracting(true)
     track = Track(
@@ -190,7 +257,19 @@ final class PetController {
     let dt = (CACurrentMediaTime() - t.startT) * 1000
     let dist = hypot(local.x - t.startLocalX, local.y - t.startLocalY)
     if dt <= PetConstants.clickMaxMs && dist <= PetConstants.dragThresholdPx {
-      setVisualState(.poke, autoIdleMs: Theme.pokeDurationMs)
+      noteInteraction()
+      chatController.toggle(nearPetFrame: overlay.frame)
     }
+  }
+
+  private func handleRightClick() {
+    noteInteraction()
+    if visualState == .roam {
+      roam?.cancel()
+    }
+    if visualState == .sleeping || visualState == .dozing || visualState == .yawning {
+      return
+    }
+    setVisualState(.poke, autoIdleMs: Theme.pokeDurationMs)
   }
 }

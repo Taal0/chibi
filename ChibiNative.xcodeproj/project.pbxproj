@@ -25,6 +25,19 @@
 		B794008598F04636944FD940 /* calico-roam-crabwalk.apng in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5591803114C929372C8DC /* calico-roam-crabwalk.apng */; };
 		36F27D117EE9466BAC7C849C /* tray.png in Resources */ = {isa = PBXBuildFile; fileRef = BE8F5D53300E4514ACF58DB8 /* tray.png */; };
 		0E71D440EC5843669F4E56CD /* calico.json in Resources */ = {isa = PBXBuildFile; fileRef = 87E30824CAC043268DC0C9E0 /* calico.json */; };
+		36DC8B70496342E9883ED1C0 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F8F684DBDC4D49921C7CF0 /* APIConfig.swift */; };
+		72DB9C0CC10D4FB9BD48BC70 /* LLMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E287784192349699CA38184 /* LLMClient.swift */; };
+		EC68ACEF02FB4CD2B82DEF18 /* ChatPanelWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10879CA462C645F6850A7C4A /* ChatPanelWindow.swift */; };
+		FDBCC1D62B20474995E9B4D5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF6D9DF009424E8D881CE7 /* ChatView.swift */; };
+		35B380DA99354FAE805BA438 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0181098A5384ED0A7E1BAC2 /* ChatViewModel.swift */; };
+		FD57E9900964460B86AD5613 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA661E43E8104F03805B39B4 /* ChatController.swift */; };
+		9E36E02992AA4F72BC4E5139 /* IdleTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B259C352EB043A08F2AC1EB /* IdleTimer.swift */; };
+		1202AC8A813B4F6497F0F10C /* calico-working-typing.apng in Resources */ = {isa = PBXBuildFile; fileRef = B116535FE31E4BDC8C536B7A /* calico-working-typing.apng */; };
+		0C1C569C945A46428E78A4DA /* calico-error.apng in Resources */ = {isa = PBXBuildFile; fileRef = 6A552D1A8AA24440BB1F1C53 /* calico-error.apng */; };
+		DD87F698BBAD48DDB23AFC74 /* calico-yawning.apng in Resources */ = {isa = PBXBuildFile; fileRef = 5EB7D90BC7C949FEA5A8A725 /* calico-yawning.apng */; };
+		3DDA2D93472A4718B008796C /* calico-dozing.apng in Resources */ = {isa = PBXBuildFile; fileRef = 734549FD5AE9415CBFAE8456 /* calico-dozing.apng */; };
+		7F18AEBF42F04E808FA99F6E /* calico-sleeping.apng in Resources */ = {isa = PBXBuildFile; fileRef = 1E83E0E2F91A4C76971AA4BF /* calico-sleeping.apng */; };
+		0560202FF8F04F4DA3B35D69 /* calico-waking.apng in Resources */ = {isa = PBXBuildFile; fileRef = C872EAEB7E294FDD8148E332 /* calico-waking.apng */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +61,19 @@
 		8EA5591803114C929372C8DC /* calico-roam-crabwalk.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-roam-crabwalk.apng"; sourceTree = "<group>"; };
 		BE8F5D53300E4514ACF58DB8 /* tray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resources/tray.png"; sourceTree = "<group>"; };
 		87E30824CAC043268DC0C9E0 /* calico.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Theme/calico.json"; sourceTree = "<group>"; };
+		C9F8F684DBDC4D49921C7CF0 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API/APIConfig.swift"; sourceTree = "<group>"; };
+		8E287784192349699CA38184 /* LLMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API/LLMClient.swift"; sourceTree = "<group>"; };
+		10879CA462C645F6850A7C4A /* ChatPanelWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat/ChatPanelWindow.swift"; sourceTree = "<group>"; };
+		81BF6D9DF009424E8D881CE7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat/ChatView.swift"; sourceTree = "<group>"; };
+		E0181098A5384ED0A7E1BAC2 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat/ChatViewModel.swift"; sourceTree = "<group>"; };
+		BA661E43E8104F03805B39B4 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chat/ChatController.swift"; sourceTree = "<group>"; };
+		9B259C352EB043A08F2AC1EB /* IdleTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet/IdleTimer.swift"; sourceTree = "<group>"; };
+		B116535FE31E4BDC8C536B7A /* calico-working-typing.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-working-typing.apng"; sourceTree = "<group>"; };
+		6A552D1A8AA24440BB1F1C53 /* calico-error.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-error.apng"; sourceTree = "<group>"; };
+		5EB7D90BC7C949FEA5A8A725 /* calico-yawning.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-yawning.apng"; sourceTree = "<group>"; };
+		734549FD5AE9415CBFAE8456 /* calico-dozing.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-dozing.apng"; sourceTree = "<group>"; };
+		1E83E0E2F91A4C76971AA4BF /* calico-sleeping.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-sleeping.apng"; sourceTree = "<group>"; };
+		C872EAEB7E294FDD8148E332 /* calico-waking.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-waking.apng"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -89,6 +115,19 @@
 				8EA5591803114C929372C8DC /* calico-roam-crabwalk.apng */,
 				BE8F5D53300E4514ACF58DB8 /* tray.png */,
 				87E30824CAC043268DC0C9E0 /* calico.json */,
+				C9F8F684DBDC4D49921C7CF0 /* APIConfig.swift */,
+				8E287784192349699CA38184 /* LLMClient.swift */,
+				10879CA462C645F6850A7C4A /* ChatPanelWindow.swift */,
+				81BF6D9DF009424E8D881CE7 /* ChatView.swift */,
+				E0181098A5384ED0A7E1BAC2 /* ChatViewModel.swift */,
+				BA661E43E8104F03805B39B4 /* ChatController.swift */,
+				9B259C352EB043A08F2AC1EB /* IdleTimer.swift */,
+				B116535FE31E4BDC8C536B7A /* calico-working-typing.apng */,
+				6A552D1A8AA24440BB1F1C53 /* calico-error.apng */,
+				5EB7D90BC7C949FEA5A8A725 /* calico-yawning.apng */,
+				734549FD5AE9415CBFAE8456 /* calico-dozing.apng */,
+				1E83E0E2F91A4C76971AA4BF /* calico-sleeping.apng */,
+				C872EAEB7E294FDD8148E332 /* calico-waking.apng */,
 			);
 			path = ChibiNative;
 			sourceTree = "<group>";
@@ -158,6 +197,13 @@
 				875C5D97271343AB863A21EC /* APNGView.swift in Sources */,
 				137EF1378BF547EA8EA30E24 /* StatusItemController.swift in Sources */,
 				52E2A8C8A71B44479CFC1D58 /* Theme.swift in Sources */,
+				36DC8B70496342E9883ED1C0 /* APIConfig.swift in Sources */,
+				72DB9C0CC10D4FB9BD48BC70 /* LLMClient.swift in Sources */,
+				EC68ACEF02FB4CD2B82DEF18 /* ChatPanelWindow.swift in Sources */,
+				FDBCC1D62B20474995E9B4D5 /* ChatView.swift in Sources */,
+				35B380DA99354FAE805BA438 /* ChatViewModel.swift in Sources */,
+				FD57E9900964460B86AD5613 /* ChatController.swift in Sources */,
+				9E36E02992AA4F72BC4E5139 /* IdleTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +221,12 @@
 				B794008598F04636944FD940 /* calico-roam-crabwalk.apng in Resources */,
 				36F27D117EE9466BAC7C849C /* tray.png in Resources */,
 				0E71D440EC5843669F4E56CD /* calico.json in Resources */,
+				1202AC8A813B4F6497F0F10C /* calico-working-typing.apng in Resources */,
+				0C1C569C945A46428E78A4DA /* calico-error.apng in Resources */,
+				DD87F698BBAD48DDB23AFC74 /* calico-yawning.apng in Resources */,
+				3DDA2D93472A4718B008796C /* calico-dozing.apng in Resources */,
+				7F18AEBF42F04E808FA99F6E /* calico-sleeping.apng in Resources */,
+				0560202FF8F04F4DA3B35D69 /* calico-waking.apng in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

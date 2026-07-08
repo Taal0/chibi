@@ -3,6 +3,9 @@ import Foundation
 
 enum CatVisualState: String {
   case idle, drag, poke, roam
+  case working
+  case error
+  case yawning, dozing, sleeping, waking
 }
 
 struct HitBox {
@@ -34,6 +37,11 @@ enum Theme {
 
   static var roamFlipAssets: Bool { data.roamFlipAssets }
   static var pokeDurationMs: Int { data.reactions.clickLeft.duration ?? 2500 }
+  static var errorDurationMs: Int { data.timings.autoReturn["error"] ?? 5000 }
+  static var yawnDurationMs: Int { data.timings.yawnDuration }
+  static var wakeDurationMs: Int { data.timings.wakeDuration }
+  static var mouseIdleTimeoutMs: Int { data.timings.mouseIdleTimeout }
+  static var mouseSleepTimeoutMs: Int { data.timings.mouseSleepTimeout }
 
   static func loadBundled() {
     guard let url = Bundle.main.url(forResource: "calico", withExtension: "json") else {
@@ -67,6 +75,12 @@ enum Theme {
     case .poke: return data.reactions.clickLeft.file
     case .roam: return data.states.roam.first ?? data.states.idle[0]
     case .idle: return data.states.idle[0]
+    case .working: return data.states.working.first ?? "calico-working-typing.apng"
+    case .error: return data.states.error.first ?? "calico-error.apng"
+    case .yawning: return data.states.yawning.first ?? "calico-yawning.apng"
+    case .dozing: return data.states.dozing.first ?? "calico-dozing.apng"
+    case .sleeping: return data.states.sleeping.first ?? "calico-sleeping.apng"
+    case .waking: return data.states.waking.first ?? "calico-waking.apng"
     }
   }
 
@@ -77,6 +91,14 @@ enum Theme {
       data.reactions.drag.file,
     ]
     files.append(contentsOf: data.states.roam)
+    files.append(contentsOf: [
+      fileForState(.working),
+      fileForState(.error),
+      fileForState(.yawning),
+      fileForState(.dozing),
+      fileForState(.sleeping),
+      fileForState(.waking),
+    ])
     return files.filter { !$0.isEmpty }
   }
 
@@ -169,11 +191,21 @@ struct ThemeData: Decodable {
   var wideHitboxFiles: [String]
   var sleepingHitboxFiles: [String]
   var objectScale: ThemeObjectScale
+  var timings: ThemeTimings
 
   static let empty = ThemeData(
     viewBox: ThemeViewBox(x: 0, y: 0, width: 266, height: 200),
     roamFlipAssets: true,
-    states: ThemeStates(idle: ["calico-idle.apng"], roam: ["calico-roam-crabwalk.apng"]),
+    states: ThemeStates(
+      idle: ["calico-idle.apng"],
+      roam: ["calico-roam-crabwalk.apng"],
+      working: ["calico-working-typing.apng"],
+      error: ["calico-error.apng"],
+      yawning: ["calico-yawning.apng"],
+      dozing: ["calico-dozing.apng"],
+      sleeping: ["calico-sleeping.apng"],
+      waking: ["calico-waking.apng"]
+    ),
     reactions: ThemeReactions(
       drag: ThemeReaction(file: "calico-react-drag.apng", duration: nil),
       clickLeft: ThemeReaction(file: "calico-react-poke.apng", duration: 3500)
@@ -192,6 +224,13 @@ struct ThemeData: Decodable {
       objBottom: 0.05,
       fileScales: [:],
       fileOffsets: [:]
+    ),
+    timings: ThemeTimings(
+      autoReturn: ["error": 5000],
+      yawnDuration: 8000,
+      wakeDuration: 5800,
+      mouseIdleTimeout: 20000,
+      mouseSleepTimeout: 60000
     )
   )
 }
@@ -206,20 +245,82 @@ struct ThemeViewBox: Decodable {
 struct ThemeStates: Decodable {
   var idle: [String]
   var roam: [String]
+  var working: [String]
+  var error: [String]
+  var yawning: [String]
+  var dozing: [String]
+  var sleeping: [String]
+  var waking: [String]
 
   enum CodingKeys: String, CodingKey {
-    case idle, roam
+    case idle, roam, working, error, yawning, dozing, sleeping, waking
   }
 
-  init(idle: [String], roam: [String]) {
+  init(
+    idle: [String],
+    roam: [String],
+    working: [String] = [],
+    error: [String] = [],
+    yawning: [String] = [],
+    dozing: [String] = [],
+    sleeping: [String] = [],
+    waking: [String] = []
+  ) {
     self.idle = idle
     self.roam = roam
+    self.working = working
+    self.error = error
+    self.yawning = yawning
+    self.dozing = dozing
+    self.sleeping = sleeping
+    self.waking = waking
   }
 
   init(from decoder: Decoder) throws {
     let c = try decoder.container(keyedBy: CodingKeys.self)
     idle = try c.decode([String].self, forKey: .idle)
     roam = try c.decodeIfPresent([String].self, forKey: .roam) ?? []
+    working = try c.decodeIfPresent([String].self, forKey: .working) ?? []
+    error = try c.decodeIfPresent([String].self, forKey: .error) ?? []
+    yawning = try c.decodeIfPresent([String].self, forKey: .yawning) ?? []
+    dozing = try c.decodeIfPresent([String].self, forKey: .dozing) ?? []
+    sleeping = try c.decodeIfPresent([String].self, forKey: .sleeping) ?? []
+    waking = try c.decodeIfPresent([String].self, forKey: .waking) ?? []
+  }
+}
+
+struct ThemeTimings: Decodable {
+  var autoReturn: [String: Int]
+  var yawnDuration: Int
+  var wakeDuration: Int
+  var mouseIdleTimeout: Int
+  var mouseSleepTimeout: Int
+
+  enum CodingKeys: String, CodingKey {
+    case autoReturn, yawnDuration, wakeDuration, mouseIdleTimeout, mouseSleepTimeout
+  }
+
+  init(
+    autoReturn: [String: Int],
+    yawnDuration: Int,
+    wakeDuration: Int,
+    mouseIdleTimeout: Int,
+    mouseSleepTimeout: Int
+  ) {
+    self.autoReturn = autoReturn
+    self.yawnDuration = yawnDuration
+    self.wakeDuration = wakeDuration
+    self.mouseIdleTimeout = mouseIdleTimeout
+    self.mouseSleepTimeout = mouseSleepTimeout
+  }
+
+  init(from decoder: Decoder) throws {
+    let c = try decoder.container(keyedBy: CodingKeys.self)
+    autoReturn = try c.decodeIfPresent([String: Int].self, forKey: .autoReturn) ?? [:]
+    yawnDuration = try c.decodeIfPresent(Int.self, forKey: .yawnDuration) ?? 8000
+    wakeDuration = try c.decodeIfPresent(Int.self, forKey: .wakeDuration) ?? 5800
+    mouseIdleTimeout = try c.decodeIfPresent(Int.self, forKey: .mouseIdleTimeout) ?? 20000
+    mouseSleepTimeout = try c.decodeIfPresent(Int.self, forKey: .mouseSleepTimeout) ?? 60000
   }
 }
 
