@@ -1,0 +1,295 @@
+ // !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62F6BEFAA471400DBEFF1A0E /* DisplayTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02726A54CE8449748EB682A8 /* DisplayTicker.swift */; };
+		CF8E816C66C8480BBE86776A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F85973F1D1407495A5F5D3 /* AppDelegate.swift */; };
+		39BC5C7C3544481EBBADB678 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BD375D0634F8791E2C24B /* main.swift */; };
+		7C1DC57AE3E24AEF9D93D984 /* RoamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F38074788412FAC5CD6FF /* RoamController.swift */; };
+		AA4AA099726841F692AE0295 /* ScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46F8C51B4344BB906E367D /* ScreenLayout.swift */; };
+		3A939E59F0FA4950BB7923B8 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E39A70A9504B4AA3AAB2CF /* OverlayWindow.swift */; };
+		97455BE9CB7541F8B695105D /* PetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0539082CC68C4205A18CF7DB /* PetController.swift */; };
+		41A2F3D632ED40E79D473C20 /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAE6132E99417491E2C494 /* PetView.swift */; };
+		FA57E0A9921444418CA5543C /* APNGPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A85FA244244E558930D2F5 /* APNGPlayer.swift */; };
+		875C5D97271343AB863A21EC /* APNGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5968023F44B4167A6380057 /* APNGView.swift */; };
+		137EF1378BF547EA8EA30E24 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AEB7C6035F4DEA915393F8 /* StatusItemController.swift */; };
+		52E2A8C8A71B44479CFC1D58 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FE053E569F4295BCAE38DC /* Theme.swift */; };
+		40CE4D5F77D2430598181339 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = A668739A09B74AFEAE0FC4F8 /* AppIcon.icns */; };
+		9B5FC6F5B7034A19A5DD3F98 /* calico-idle.apng in Resources */ = {isa = PBXBuildFile; fileRef = 4B891D3B2CAA48BCB712FC80 /* calico-idle.apng */; };
+		06F98FDB30C34DEA99E639C7 /* calico-react-drag.apng in Resources */ = {isa = PBXBuildFile; fileRef = BDC6C0362D66477191A401E9 /* calico-react-drag.apng */; };
+		12E6185BFCEE40CDBBF67FEF /* calico-react-poke.apng in Resources */ = {isa = PBXBuildFile; fileRef = E31312F4080A4F15B024C36A /* calico-react-poke.apng */; };
+		B794008598F04636944FD940 /* calico-roam-crabwalk.apng in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5591803114C929372C8DC /* calico-roam-crabwalk.apng */; };
+		36F27D117EE9466BAC7C849C /* tray.png in Resources */ = {isa = PBXBuildFile; fileRef = BE8F5D53300E4514ACF58DB8 /* tray.png */; };
+		0E71D440EC5843669F4E56CD /* calico.json in Resources */ = {isa = PBXBuildFile; fileRef = 87E30824CAC043268DC0C9E0 /* calico.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02726A54CE8449748EB682A8 /* DisplayTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Render/DisplayTicker.swift"; sourceTree = "<group>"; };
+		A0CB283B17C2408E92CEC8E3 /* ChibiNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChibiNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9F85973F1D1407495A5F5D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/AppDelegate.swift"; sourceTree = "<group>"; };
+		523BD375D0634F8791E2C24B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/main.swift"; sourceTree = "<group>"; };
+		953F38074788412FAC5CD6FF /* RoamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/RoamController.swift"; sourceTree = "<group>"; };
+		0F46F8C51B4344BB906E367D /* ScreenLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/ScreenLayout.swift"; sourceTree = "<group>"; };
+		11E39A70A9504B4AA3AAB2CF /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Overlay/OverlayWindow.swift"; sourceTree = "<group>"; };
+		0539082CC68C4205A18CF7DB /* PetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet/PetController.swift"; sourceTree = "<group>"; };
+		50EAE6132E99417491E2C494 /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pet/PetView.swift"; sourceTree = "<group>"; };
+		47A85FA244244E558930D2F5 /* APNGPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Render/APNGPlayer.swift"; sourceTree = "<group>"; };
+		A5968023F44B4167A6380057 /* APNGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Render/APNGView.swift"; sourceTree = "<group>"; };
+		A2AEB7C6035F4DEA915393F8 /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status/StatusItemController.swift"; sourceTree = "<group>"; };
+		39FE053E569F4295BCAE38DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme/Theme.swift"; sourceTree = "<group>"; };
+		A668739A09B74AFEAE0FC4F8 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Resources/AppIcon.icns"; sourceTree = "<group>"; };
+		4B891D3B2CAA48BCB712FC80 /* calico-idle.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-idle.apng"; sourceTree = "<group>"; };
+		BDC6C0362D66477191A401E9 /* calico-react-drag.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-react-drag.apng"; sourceTree = "<group>"; };
+		E31312F4080A4F15B024C36A /* calico-react-poke.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-react-poke.apng"; sourceTree = "<group>"; };
+		8EA5591803114C929372C8DC /* calico-roam-crabwalk.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Resources/theme/calico/assets/calico-roam-crabwalk.apng"; sourceTree = "<group>"; };
+		BE8F5D53300E4514ACF58DB8 /* tray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resources/tray.png"; sourceTree = "<group>"; };
+		87E30824CAC043268DC0C9E0 /* calico.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Theme/calico.json"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		01C47985969146BD8748D43F = {
+			isa = PBXGroup;
+			children = (
+				8B4D6D4C337D4DE38A5C5650 /* ChibiNative */,
+				C8ADFDABFE514B4FAA936FA1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C8ADFDABFE514B4FAA936FA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0CB283B17C2408E92CEC8E3 /* ChibiNative.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B4D6D4C337D4DE38A5C5650 /* ChibiNative */ = {
+			isa = PBXGroup;
+			children = (
+				F9F85973F1D1407495A5F5D3 /* AppDelegate.swift */,
+				523BD375D0634F8791E2C24B /* main.swift */,
+				953F38074788412FAC5CD6FF /* RoamController.swift */,
+				0F46F8C51B4344BB906E367D /* ScreenLayout.swift */,
+				11E39A70A9504B4AA3AAB2CF /* OverlayWindow.swift */,
+				0539082CC68C4205A18CF7DB /* PetController.swift */,
+				50EAE6132E99417491E2C494 /* PetView.swift */,
+				47A85FA244244E558930D2F5 /* APNGPlayer.swift */,
+				02726A54CE8449748EB682A8 /* DisplayTicker.swift */,
+				A5968023F44B4167A6380057 /* APNGView.swift */,
+				A2AEB7C6035F4DEA915393F8 /* StatusItemController.swift */,
+				39FE053E569F4295BCAE38DC /* Theme.swift */,
+				A668739A09B74AFEAE0FC4F8 /* AppIcon.icns */,
+				4B891D3B2CAA48BCB712FC80 /* calico-idle.apng */,
+				BDC6C0362D66477191A401E9 /* calico-react-drag.apng */,
+				E31312F4080A4F15B024C36A /* calico-react-poke.apng */,
+				8EA5591803114C929372C8DC /* calico-roam-crabwalk.apng */,
+				BE8F5D53300E4514ACF58DB8 /* tray.png */,
+				87E30824CAC043268DC0C9E0 /* calico.json */,
+			);
+			path = ChibiNative;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31035CF528CC4F3696653C94 /* ChibiNative */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4522DD5CCBB4A5EA6F3D0DE /* Build configuration list for PBXNativeTarget "ChibiNative" */;
+			buildPhases = (
+				B1B402E215F346658E850A9C /* Sources */,
+				697561D3164E4A3BBC35DB03 /* Resources */,
+				2CBA063C48B34126B281CB73 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChibiNative;
+			productName = ChibiNative;
+			productReference = A0CB283B17C2408E92CEC8E3 /* ChibiNative.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		395CFEE018124A85A7377188 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 83E409C536264AF6B53119B0 /* Build configuration list for PBXProject "ChibiNative" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01C47985969146BD8748D43F;
+			productRefGroup = C8ADFDABFE514B4FAA936FA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31035CF528CC4F3696653C94 /* ChibiNative */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1B402E215F346658E850A9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F6BEFAA471400DBEFF1A0E /* DisplayTicker.swift in Sources */,
+				CF8E816C66C8480BBE86776A /* AppDelegate.swift in Sources */,
+				39BC5C7C3544481EBBADB678 /* main.swift in Sources */,
+				7C1DC57AE3E24AEF9D93D984 /* RoamController.swift in Sources */,
+				AA4AA099726841F692AE0295 /* ScreenLayout.swift in Sources */,
+				3A939E59F0FA4950BB7923B8 /* OverlayWindow.swift in Sources */,
+				97455BE9CB7541F8B695105D /* PetController.swift in Sources */,
+				41A2F3D632ED40E79D473C20 /* PetView.swift in Sources */,
+				FA57E0A9921444418CA5543C /* APNGPlayer.swift in Sources */,
+				875C5D97271343AB863A21EC /* APNGView.swift in Sources */,
+				137EF1378BF547EA8EA30E24 /* StatusItemController.swift in Sources */,
+				52E2A8C8A71B44479CFC1D58 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		697561D3164E4A3BBC35DB03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40CE4D5F77D2430598181339 /* AppIcon.icns in Resources */,
+				9B5FC6F5B7034A19A5DD3F98 /* calico-idle.apng in Resources */,
+				06F98FDB30C34DEA99E639C7 /* calico-react-drag.apng in Resources */,
+				12E6185BFCEE40CDBBF67FEF /* calico-react-poke.apng in Resources */,
+				B794008598F04636944FD940 /* calico-roam-crabwalk.apng in Resources */,
+				36F27D117EE9466BAC7C849C /* tray.png in Resources */,
+				0E71D440EC5843669F4E56CD /* calico.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2CBA063C48B34126B281CB73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C8809C0D8E894F18B2996A2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)",);
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		57977BFA21264098AF7580FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_DYNAMIC_NO_PIC = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AF7FC7AC808945EA96574FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChibiNative/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../Frameworks",);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talo.ChibiNative;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		68AC76A711CA46B8AD273D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChibiNative/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../Frameworks",);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talo.ChibiNative;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83E409C536264AF6B53119B0 /* Build configuration list for PBXProject "ChibiNative" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8809C0D8E894F18B2996A2E /* Debug */,
+				57977BFA21264098AF7580FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4522DD5CCBB4A5EA6F3D0DE /* Build configuration list for PBXNativeTarget "ChibiNative" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF7FC7AC808945EA96574FAC /* Debug */,
+				68AC76A711CA46B8AD273D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 395CFEE018124A85A7377188 /* Project object */;
+}
